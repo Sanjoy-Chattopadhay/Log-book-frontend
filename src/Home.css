@@ -1,0 +1,197 @@
+/* home.css - Updated with Theme Support */
+.three-column-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0rem 2rem 2rem 2rem; /* reduced top padding to 1rem */
+}
+
+.sidebar {
+  /* position: sticky;
+  top: 100px; */
+  align-self: stretch;
+}
+
+.main-content {
+  max-width: 100%;
+  background: var(--background);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  font-weight: 400;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Dark mode shadow adjustment */
+.dark-mode .main-content {
+  box-shadow: 0 2px 12px rgba(255, 255, 255, 0.05);
+}
+
+/* Additional styling for main content elements */
+.main-content h1 {
+  font-size: 28px;
+  color: var(--heading-color);
+  margin-bottom: 16px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.main-content h2 {
+  font-size: 24px;
+  color: var(--heading-color);
+  margin-bottom: 12px;
+  margin-top: 20px;
+  transition: color 0.3s ease;
+}
+
+.main-content h3 {
+  color: var(--heading-color);
+  transition: color 0.3s ease;
+}
+
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  color: var(--heading-color);
+  transition: color 0.3s ease;
+}
+
+.main-content p {
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.main-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 16px 0;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+/* Links inside main content */
+.main-content a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.main-content a:hover {
+  text-decoration: underline;
+}
+
+.main-content a:visited {
+  color: var(--link-color);
+}
+
+/* General links (outside main content) */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--link-color);
+}
+
+/* Additional content elements that might need theme support */
+.main-content ul,
+.main-content ol {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.main-content li {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.main-content blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 16px;
+  margin: 16px 0;
+  color: var(--text-color);
+  background: var(--navbar-bg);
+  padding: 12px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.main-content pre {
+  background: var(--code-bg);
+  color: var(--text-color);
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  transition: all 0.3s ease;
+}
+
+.main-content code {
+  background: var(--code-bg);
+  color: var(--text-color);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+}
+
+/* Table styling if you have tables */
+.main-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.main-content th,
+.main-content td {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: left;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.main-content th {
+  background: var(--navbar-bg);
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .three-column-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .sidebar {
+    order: 2;
+  }
+
+  .main-content {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .three-column-layout {
+    padding: 0.5rem;
+  }
+
+  .main-content {
+    padding: 12px;
+    border-radius: 8px;
+  }
+}

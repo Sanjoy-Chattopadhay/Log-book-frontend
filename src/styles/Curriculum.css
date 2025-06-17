@@ -1,0 +1,41 @@
+.curriculum-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  /* font-family: "PT Sans Narrow", sans-serif; */
+  color: #222;
+}
+
+.curriculum-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.curriculum-container h2 {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.25rem;
+}
+
+.entry + .entry {
+  margin-top: 1.5rem;
+}
+
+.entry h3 {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.date {
+  font-weight: normal;
+  font-style: italic;
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.entry p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}

@@ -1,0 +1,95 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%; /* Full width of the 280px container */
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  /* font-family: "PT Sans Narrow", sans-serif; */
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #333;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.archive-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.archive-count {
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.see-all-link {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #0066cc;
+  cursor: pointer;
+}
+/* Dark mode for profile-related cards */
+.dark-mode .profile-card,
+.dark-mode .action-card,
+.dark-mode .contact-card,
+.dark-mode .email-subscribe-card {
+  background: var(--background);
+  color: var(--text-color);
+  box-shadow: 0 2px 20px rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+/* Dark mode adjustments for card texts */
+.dark-mode .subtitle em,
+.dark-mode .location,
+.dark-mode .location i,
+.dark-mode .stat-label,
+.dark-mode .email-subscribe-title {
+  color: var(--text-color);
+}
+
+/* Dark mode icons */
+.dark-mode .icons {
+  color: var(--text-color);
+}
+
+/* Dark mode buttons */
+.dark-mode .btn,
+.dark-mode .action-btn,
+.dark-mode .subscribe-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.dark-mode .btn:hover,
+.dark-mode .action-btn:hover,
+.dark-mode .subscribe-btn:hover {
+  background-color: #4e92e0;
+}
+
+/* Dark mode email input */
+.dark-mode .email-input {
+  background: #1e1e1e;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.dark-mode .email-input:focus {
+  background: #121212;
+  border-color: var(--primary-color);
+}

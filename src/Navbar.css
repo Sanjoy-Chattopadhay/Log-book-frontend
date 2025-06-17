@@ -1,0 +1,76 @@
+.navbar {
+  width: 100%;
+  height: 48px;
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  max-width: 1200px;
+  list-style: none;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-center li {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-center a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 13px;
+  color: var(--primary-color);
+}
+/* 
+.navbar-center a.active {
+  background: yellow; TEMPORARY highlight
+}
+ */
+.theme-toggle {
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+.navbar-center a.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 2px;
+}

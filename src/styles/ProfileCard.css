@@ -1,0 +1,340 @@
+/* ---------- Profile Card ---------- */
+.profile-card {
+  width: 100%;
+  max-width: 280px;
+  background: linear-gradient(to bottom right, #ffffff, #f8f9fb);
+  border-radius: 12px;
+  padding: 28px 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Profile Image ---------- */
+.profile-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  /* box-shadow: 0 0 0 3px #3367d6; */
+  /* transition: transform 0.2s ease; */
+}
+
+/* .profile-img:hover {
+  transform: scale(1.05);
+} */
+
+/* ---------- Headings ---------- */
+h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.subtitle em {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ---------- Location ---------- */
+.location {
+  font-size: 13.5px;
+  color: #444;
+  margin: 10px 0 18px;
+}
+
+.location i {
+  margin-right: 6px;
+  color: #3367d6;
+}
+
+/* ---------- Stats ---------- */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 18px;
+}
+
+.stat-number {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #555;
+  margin-top: 2px;
+}
+
+/* ---------- Buttons ---------- */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.btn {
+  background-color: #3367d6;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-size: 13.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #234cb4;
+  transform: translateY(-1px);
+}
+
+/* ---------- Social Icons ---------- */
+.icons {
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.icons i:hover {
+  color: #3367d6;
+}
+
+/* ---------- Wrapper ---------- */
+.left-column {
+  width: 280px;
+  align-self: start;
+}
+
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ---------- Action & Contact Cards ---------- */
+.action-card,
+.contact-card {
+  background: linear-gradient(to top right, #fff, #f6f9ff);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.action-btn {
+  width: 100%;
+  background-color: #3367d6;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 10px;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.action-btn:hover {
+  background-color: #4e92e0;
+}
+
+/* ---------- Email Subscribe ---------- */
+.email-subscribe-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.email-subscribe-title {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 13.5px;
+  background: #fafafa;
+  transition: border 0.3s ease;
+  min-height: 80px;
+}
+
+.email-input:focus {
+  border-color: #999;
+  background: #fff;
+  outline: none;
+}
+
+.subscribe-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #3367d6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13.5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.subscribe-btn:hover {
+  background-color: #234cb4;
+}
+
+/* ---------- Dark Mode Support ---------- */
+.dark-mode .profile-card,
+.dark-mode .action-card,
+.dark-mode .contact-card,
+.dark-mode .email-subscribe-card {
+  background: var(--background);
+  color: var(--text-color);
+  box-shadow: 0 2px 20px rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+.dark-mode .subtitle em,
+.dark-mode .location,
+.dark-mode .location i,
+.dark-mode .stat-label,
+.dark-mode .email-subscribe-title {
+  color: var(--text-color);
+}
+
+.dark-mode .icons {
+  color: var(--text-color);
+}
+
+.dark-mode .btn,
+.dark-mode .action-btn,
+.dark-mode .subscribe-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.dark-mode .btn:hover,
+.dark-mode .action-btn:hover,
+.dark-mode .subscribe-btn:hover {
+  background-color: #4e92e0;
+}
+
+.dark-mode .email-input {
+  background: #1e1e1e;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.dark-mode .email-input:focus {
+  background: #121212;
+  border-color: var(--primary-color);
+}
+.profile-card {
+  border-radius: 0; /* Sharp edges */
+  padding: 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.subtitle em {
+  font-size: 13.5px;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.btn {
+  background-color: #3367d6;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-size: 13.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #234cb4;
+  transform: translateY(-1px);
+}
+
+.btn.gray-blue {
+  background-color: #f3f4f6; /* light gray */
+  color: #1f2937; /* dark text */
+  border: 1px solid #d1d5db;
+  border-radius: 25px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn.gray-blue:hover {
+  background-color: #e5e7eb;
+  border-color: #cbd5e1;
+  color: #111827;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  font-size: 18px;
+  color: #444;
+  margin-top: 12px;
+}
+
+.icons a {
+  color: inherit;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.icons a:hover {
+  color: #111;
+  transform: translateY(-2px);
+}
+
+.dark-mode .icons a {
+  color: #bbb;
+}
+
+.dark-mode .icons a:hover {
+  color: #fff;
+}
