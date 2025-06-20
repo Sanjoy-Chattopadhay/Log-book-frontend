@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Sidebar.css";
-// import { API_BASE } from "../../server/utils/api.js"; // adjust path as needed
+
 const API_BASE = import.meta.env.VITE_API_BASE;
 
 const TagsCard = () => {
@@ -24,7 +25,7 @@ const TagsCard = () => {
     <div className="card">
       <h3>Tags</h3>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-        {tags.map(({ tag, count }, i) => (
+        {tags.slice(0, 10).map(({ tag, count }, i) => (
           <div
             key={i}
             style={{
@@ -42,6 +43,21 @@ const TagsCard = () => {
           </div>
         ))}
       </div>
+      {tags.length > 10 && (
+        <div style={{ marginTop: "10px" }}>
+          <Link
+            to="/tags"
+            style={{
+              fontSize: "13px",
+              color: "#1677ff",
+              fontWeight: 500,
+              textDecoration: "none",
+            }}
+          >
+            → More Tags
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

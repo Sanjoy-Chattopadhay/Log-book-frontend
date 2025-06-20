@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../components/Card";
 import AddProject from "./AddProject";
-// import { API_BASE } from "../../server/utils/api.js";
+import "../styles/PopupForm.css";
+
 const API_BASE = import.meta.env.VITE_API_BASE;
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const projectsPerPage = 5;
 
   useEffect(() => {
     fetchProjects();
@@ -32,10 +35,18 @@ const Projects = () => {
     }
   };
 
-  const handleProjectAdded = (newProject) => {
+  const handleNewProject = (newProject) => {
     setProjects((prev) => [newProject, ...prev]);
-    setShowPopup(false);
+    setShowForm(false);
+    setPage(1);
   };
+
+  const handleOpenForm = () => setShowForm(true);
+  const handleCloseForm = () => setShowForm(false);
+
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const startIdx = (page - 1) * projectsPerPage;
+  const currentProjects = projects.slice(startIdx, startIdx + projectsPerPage);
 
   return (
     <div style={{ padding: "2rem", minHeight: "100vh", position: "relative" }}>
@@ -50,7 +61,7 @@ const Projects = () => {
       >
         <h1 style={{ fontFamily: "PT Sans Narrow, sans-serif" }}>Projects</h1>
         <button
-          onClick={() => setShowPopup(true)}
+          onClick={handleOpenForm}
           style={{
             backgroundColor: "#1e88e5",
             color: "#fff",
@@ -87,19 +98,74 @@ const Projects = () => {
             Retry
           </button>
         </div>
-      ) : projects.length === 0 ? (
-        <p>No projects found. Click the "Add Project" button to create one!</p>
+      ) : projects.length > 0 ? (
+        <>
+          {currentProjects.map((project) => (
+            <div
+              key={project._id || project.id}
+              style={{ marginBottom: "1.5rem" }}
+            >
+              <Card data={project} type="projects" />
+            </div>
+          ))}
+
+          {/* Pagination */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "2rem",
+              gap: "1rem",
+              fontWeight: "500",
+            }}
+          >
+            <button
+              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+              disabled={page === 1}
+              style={{
+                padding: "6px 12px",
+                backgroundColor: "#1e88e5",
+                color: "#fff",
+                border: "none",
+                borderRadius: "4px",
+                cursor: page === 1 ? "not-allowed" : "pointer",
+                opacity: page === 1 ? 0.6 : 1,
+              }}
+            >
+              ← Prev
+            </button>
+
+            <span>
+              Page {page} of {totalPages}
+            </span>
+
+            <button
+              onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={page === totalPages}
+              style={{
+                padding: "6px 12px",
+                backgroundColor: "#1e88e5",
+                color: "#fff",
+                border: "none",
+                borderRadius: "4px",
+                cursor: page === totalPages ? "not-allowed" : "pointer",
+                opacity: page === totalPages ? 0.6 : 1,
+              }}
+            >
+              Next →
+            </button>
+          </div>
+        </>
       ) : (
-        projects.map((project) => (
-          <Card key={project._id} data={project} type="projects" />
-        ))
+        <p>No projects found. Click the "Add Project" button to create one!</p>
       )}
 
-      {/* Popup */}
-      {showPopup && (
+      {/* Popup Form */}
+      {showForm && (
         <AddProject
-          onClose={() => setShowPopup(false)}
-          onProjectAdded={handleProjectAdded}
+          onClose={handleCloseForm}
+          onProjectAdded={handleNewProject}
         />
       )}
     </div>

@@ -72,7 +72,7 @@ function ProfileCard() {
 
           <a
             className="btn gray-blue"
-            href="upi://pay?pa=chatterjeesanjoy347-3@okhdfcbank&pn=Sanjoy%20Chattopadhyay&cu=INR"
+            href="upi://pay?pa=chatterjeesanjoy347-3@okhdfcbank&pn=Sanjoy%20Chattopadhyay&cu=100"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -98,7 +98,7 @@ function ProfileCard() {
             <i className="fab fa-linkedin"></i>
           </a>
           <a
-            href="mailto:sanjoy@example.com"
+            href="mailto:chatterjeesanjoy347@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Email"
@@ -125,7 +125,7 @@ function ProfileCard() {
       </div>
 
       {/* Card 2: Actions */}
-      <div className="action-card">
+      {/* <div className="action-card">
         <button className="btn gray-blue" onClick={() => navigate("/create")}>
           Write a Blog
         </button>
@@ -141,7 +141,7 @@ function ProfileCard() {
         >
           Upload a Project
         </button>
-      </div>
+      </div> */}
 
       <div className="email-subscribe-card">
         <p className="email-subscribe-title">Send me a message</p>
@@ -151,7 +151,7 @@ function ProfileCard() {
             e.preventDefault();
             const message = e.target.message.value.trim();
             if (!message) return;
-            const mailto = `mailto:sanjoy@example.com?subject=Hello%20Sanjoy&body=${encodeURIComponent(
+            const mailto = `mailto:chattopadhyaysanjoy18@gmail.com?subject=Hello%20Sanjoy&body=${encodeURIComponent(
               message
             )}`;
             window.location.href = mailto;

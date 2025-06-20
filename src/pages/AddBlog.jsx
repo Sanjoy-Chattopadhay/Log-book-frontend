@@ -32,10 +32,15 @@ const AddBlog = ({ onClose, onBlogAdded }) => {
 
       const res = await axios.post(`${API_BASE}/blog`, payload);
 
-      onBlogAdded(res.data);
-      onClose();
+      console.log("Blog created successfully:", res.data);
+
+      if (onBlogAdded) onBlogAdded(res.data);
+      if (onClose) onClose(); // make sure onClose is valid
     } catch (err) {
-      setError(err.response?.data?.error || "Failed to create blog");
+      console.error("Blog submission error:", err);
+      setError(
+        err.response?.data?.error || err.message || "Failed to create blog"
+      );
     }
   };
 

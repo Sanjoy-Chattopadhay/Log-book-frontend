@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../components/Card";
-// import { API_BASE } from "../../server/utils/api.js";
-const API_BASE = import.meta.env.VITE_API_BASE;
-
 import AddBlog from "./AddBlog.jsx";
 import "../styles/PopupForm.css";
+
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [page, setPage] = useState(1);
+  const blogsPerPage = 5;
 
   useEffect(() => {
     fetchBlogs();
@@ -38,10 +39,15 @@ const Blog = () => {
   const handleNewBlog = (newBlog) => {
     setBlogs((prev) => [newBlog, ...prev]);
     setShowForm(false);
+    setPage(1); // reset to first page
   };
 
   const handleOpenForm = () => setShowForm(true);
   const handleCloseForm = () => setShowForm(false);
+
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+  const startIdx = (page - 1) * blogsPerPage;
+  const currentBlogs = blogs.slice(startIdx, startIdx + blogsPerPage);
 
   return (
     <div style={{ padding: "2rem", minHeight: "100vh", position: "relative" }}>
@@ -72,6 +78,7 @@ const Blog = () => {
         </button>
       </div>
 
+      {/* Blog List */}
       {loading ? (
         <p>Loading blogs...</p>
       ) : error ? (
@@ -93,11 +100,61 @@ const Blog = () => {
           </button>
         </div>
       ) : blogs.length > 0 ? (
-        blogs.map((blog) => (
-          <div key={blog._id || blog.id} style={{ marginBottom: "1.5rem" }}>
-            <Card data={blog} type="blog" />
+        <>
+          {currentBlogs.map((blog) => (
+            <div key={blog._id || blog.id} style={{ marginBottom: "1.5rem" }}>
+              <Card data={blog} type="blog" />
+            </div>
+          ))}
+
+          {/* Pagination Controls */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "2rem",
+              gap: "1rem",
+              fontWeight: "500",
+            }}
+          >
+            <button
+              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+              disabled={page === 1}
+              style={{
+                padding: "6px 12px",
+                backgroundColor: "#1e88e5",
+                color: "#fff",
+                border: "none",
+                borderRadius: "4px",
+                cursor: page === 1 ? "not-allowed" : "pointer",
+                opacity: page === 1 ? 0.6 : 1,
+              }}
+            >
+              ← Prev
+            </button>
+
+            <span>
+              Page {page} of {totalPages}
+            </span>
+
+            <button
+              onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={page === totalPages}
+              style={{
+                padding: "6px 12px",
+                backgroundColor: "#1e88e5",
+                color: "#fff",
+                border: "none",
+                borderRadius: "4px",
+                cursor: page === totalPages ? "not-allowed" : "pointer",
+                opacity: page === totalPages ? 0.6 : 1,
+              }}
+            >
+              Next →
+            </button>
           </div>
-        ))
+        </>
       ) : (
         <p>
           No blogs found. Click the "Add Blog" button to create your first blog!

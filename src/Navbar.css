@@ -22,6 +22,11 @@
   padding: 0;
 }
 
+.navbar-center a:visited {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
 .navbar-center li {
   display: flex;
   align-items: center;
@@ -73,4 +78,70 @@
   color: var(--primary-color);
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 2px;
+}
+
+/* Hamburger icon for small screens */
+.hamburger {
+  display: none;
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--text-color);
+}
+
+/* Mobile menu toggle styles */
+.navbar-mobile {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--navbar-bg);
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--border-color);
+  z-index: 999;
+}
+
+.navbar-mobile a {
+  padding: 0.5rem 0;
+  width: 100%;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .navbar-center {
+    display: none; /* hide full nav on mobile */
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 16px;
+  }
+
+  .navbar-mobile.show {
+    display: flex;
+  }
+}
+/* Right-side container for theme toggle */
+.navbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+}
+
+@media (max-width: 768px) {
+  .navbar-right {
+    position: absolute;
+    top: 12px;
+    right: 3.2rem;
+    padding: 0;
+  }
 }

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { API_BASE } from "../../server/utils/api.js";
 const API_BASE = import.meta.env.VITE_API_BASE;
 
 import "../styles/PopupForm.css";
@@ -42,23 +41,24 @@ const AddArticle = ({ onClose, onArticleAdded }) => {
     const readTime = `${Math.ceil(wordCount / 200)} min`;
 
     if (wordCount < 10) {
-      alert("Content is too short. Please write at least 10 words.");
+      alert("❌ Content too short. Minimum 10 words required.");
       return;
     }
 
     try {
-      const res = await axios.post(`${API_BASE}/article`, {
+      const payload = {
         ...form,
         tag: form.tag.split(",").map((t) => t.trim()),
         wordCount,
         readTime,
-      });
+      };
 
+      const res = await axios.post(`${API_BASE}/article`, payload);
       onArticleAdded(res.data);
       onClose();
     } catch (err) {
       console.error("Error submitting article:", err.message);
-      alert("❌ Error submitting article.");
+      alert("❌ Failed to submit article. Please try again.");
     }
   };
 
@@ -69,32 +69,81 @@ const AddArticle = ({ onClose, onArticleAdded }) => {
           ×
         </button>
         <h2 className="popup-title">Add Article</h2>
-        <form onSubmit={handleSubmit} className="popup-form">
-          {["title", "summary", "content", "author", "tag"].map((field) => (
-            <div key={field} className="form-group">
-              <label htmlFor={field}>
-                {field === "tag"
-                  ? "Tags (comma-separated)"
-                  : field.charAt(0).toUpperCase() + field.slice(1)}
-              </label>
-              <textarea
-                id={field}
-                rows={field === "summary" || field === "content" ? 5 : 1}
-                name={field}
-                value={form[field]}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          ))}
 
+        <form onSubmit={handleSubmit} className="popup-form">
+          {/* Title */}
+          <div className="form-group">
+            <label htmlFor="title">Title</label>
+            <input
+              id="title"
+              name="title"
+              value={form.title}
+              onChange={handleChange}
+              required
+              type="text"
+            />
+          </div>
+
+          {/* Summary */}
+          <div className="form-group">
+            <label htmlFor="summary">Summary</label>
+            <textarea
+              id="summary"
+              name="summary"
+              value={form.summary}
+              onChange={handleChange}
+              rows={3}
+              required
+            />
+          </div>
+
+          {/* Content */}
+          <div className="form-group">
+            <label htmlFor="content">Content</label>
+            <textarea
+              id="content"
+              name="content"
+              value={form.content}
+              onChange={handleChange}
+              rows={6}
+              required
+            />
+          </div>
+
+          {/* Author */}
+          <div className="form-group">
+            <label htmlFor="author">Author</label>
+            <input
+              id="author"
+              name="author"
+              value={form.author}
+              onChange={handleChange}
+              required
+              type="text"
+            />
+          </div>
+
+          {/* Tags */}
+          <div className="form-group">
+            <label htmlFor="tag">Tags (comma-separated)</label>
+            <input
+              id="tag"
+              name="tag"
+              value={form.tag}
+              onChange={handleChange}
+              type="text"
+              placeholder="e.g., react, hooks, frontend"
+            />
+          </div>
+
+          {/* Category */}
           <div className="form-group">
             <label htmlFor="category">Category</label>
             <select
+              id="category"
               name="category"
               value={form.category}
               onChange={handleChange}
-              id="category"
             >
               {categories.map((cat, idx) => (
                 <option key={idx} value={cat}>
@@ -104,6 +153,7 @@ const AddArticle = ({ onClose, onArticleAdded }) => {
             </select>
           </div>
 
+          {/* Submit Button */}
           <button type="submit" className="submit-btn">
             Submit Article
           </button>

@@ -12,7 +12,7 @@ const Footer = () => {
             className="footer-image"
           />
           <span className="footer-text">
-            © 2025 Sanjoy Chattopadhyay &nbsp;|&nbsp; Powered by{" "}
+            © {new Date().getFullYear()} Sanjoy Chattopadhyay · Powered by{" "}
             <a
               href="https://react.dev"
               target="_blank"
@@ -29,6 +29,24 @@ const Footer = () => {
               Vite
             </a>
           </span>
+        </div>
+
+        <div className="footer-middle">
+          <a href="/" className="footer-link">
+            Home
+          </a>
+          <a href="/blog" className="footer-link">
+            Blogs
+          </a>
+          <a href="/articles" className="footer-link">
+            Articles
+          </a>
+          <a href="/projects" className="footer-link">
+            Projects
+          </a>
+          <a href="/contact" className="footer-link">
+            Contact
+          </a>
         </div>
 
         <div className="footer-right">

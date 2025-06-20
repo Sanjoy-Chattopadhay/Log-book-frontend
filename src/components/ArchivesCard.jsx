@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Sidebar.css";
-// import { API_BASE } from "../../server/utils/api.js"; // adjust path as needed
+
 const API_BASE = import.meta.env.VITE_API_BASE;
 
 const ArchivesCard = () => {
   const [archives, setArchives] = useState([]);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const fetchArchives = async () => {
@@ -20,6 +21,8 @@ const ArchivesCard = () => {
     fetchArchives();
   }, []);
 
+  const visibleArchives = showAll ? archives : archives.slice(0, 6);
+
   return (
     <div className="card">
       <h3>Archives</h3>
@@ -28,7 +31,7 @@ const ArchivesCard = () => {
           No archive data available.
         </p>
       ) : (
-        archives.map((item, i) => (
+        visibleArchives.map((item, i) => (
           <div
             key={i}
             style={{
@@ -54,16 +57,20 @@ const ArchivesCard = () => {
           </div>
         ))
       )}
-      <div
-        style={{
-          marginTop: 10,
-          fontSize: 13,
-          color: "#0066cc",
-          cursor: "pointer",
-        }}
-      >
-        See All &gt;&gt;
-      </div>
+
+      {archives.length > 6 && (
+        <div
+          style={{
+            marginTop: 10,
+            fontSize: 13,
+            color: "#0066cc",
+            cursor: "pointer",
+          }}
+          onClick={() => setShowAll(!showAll)}
+        >
+          {showAll ? "Show Less <<" : "Show More >>"}
+        </div>
+      )}
     </div>
   );
 };

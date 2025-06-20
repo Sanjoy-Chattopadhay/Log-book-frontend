@@ -2,12 +2,12 @@
   padding: 20px;
   background-color: #f9f9f9;
   color: #444;
-  /* font-family: "DM Mono", monospace; */
-  font-weight: 400; /* or 300 for lighter, 500 for slightly bold */
+  font-weight: 400;
   font-size: 14px;
   border-top: 1px solid #e0e0e0;
   position: relative;
   margin-top: 4rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer-inner {
@@ -17,13 +17,14 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .footer-left {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 1 1 auto;
 }
 
 .footer-image {
@@ -31,22 +32,56 @@
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
+  border: 1px solid #ccc;
+  transition: transform 0.3s ease;
+}
+
+.footer-image:hover {
+  transform: scale(1.05);
+}
+
+.footer-text {
+  font-size: 13px;
 }
 
 .footer-text a {
   color: #3367d6;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .footer-text a:hover {
+  color: #1a4fb1;
+  text-decoration: underline;
+}
+
+.footer-middle {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.footer-link {
+  color: #444;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #000;
   text-decoration: underline;
 }
 
 .footer-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
   font-size: 18px;
+  flex: 1 1 auto;
+  justify-content: flex-end;
 }
 
 .footer-icon {
@@ -67,9 +102,73 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 10px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .scroll-up-btn:hover {
   background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* =============== DARK MODE =============== */
+.dark-mode .footer-container {
+  background-color: #1f1f1f;
+  color: #ccc;
+  border-top: 1px solid var(--border-color);
+}
+
+.dark-mode .footer-text a {
+  color: #62a0ff;
+}
+
+.dark-mode .footer-text a:hover {
+  color: #93c4ff;
+}
+
+.dark-mode .footer-link {
+  color: #ccc;
+}
+
+.dark-mode .footer-link:hover {
+  color: white;
+}
+
+.dark-mode .footer-icon {
+  color: #ccc;
+}
+
+.dark-mode .footer-icon:hover {
+  color: #fff;
+}
+
+.dark-mode .scroll-up-btn {
+  background: #2c2c2c;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .scroll-up-btn:hover {
+  background: #3a3a3a;
+}
+
+/* =============== RESPONSIVE =============== */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-left,
+  .footer-middle,
+  .footer-right {
+    justify-content: center;
+  }
+
+  .scroll-up-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    top: auto;
+  }
 }
